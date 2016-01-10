@@ -7,21 +7,6 @@ html{
 .container{
   
 }
-#scope{
-  z-index: 10000000;
-  display: none;
-  width: 500px;
-  height: 500px;
-  border-radius: 100%;
-  box-shadow: 0 0 10px 2000px #000;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  color: red;
-  text-align: center;
-  line-height: 500px;
-  cursor: none;
-  pointer-events: none;
-}
 #scene{
   width: 800px;
   height: 600px;
@@ -32,6 +17,9 @@ html{
 }
 #scene:hover{
   cursor: crosshair;
+}
+#scene.scope{
+  cursor: url(images/my-cursor.png), auto;
 }
 player{
   position: absolute;
