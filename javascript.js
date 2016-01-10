@@ -20,7 +20,7 @@ $("#scene").click(function(e){
   socket.emit('click', data);
 
   // Play shooting sound
-  shoot.play();
+  // shoot.play();
 });
 
 function update(data){
