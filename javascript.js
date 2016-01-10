@@ -28,7 +28,7 @@ function update(data){
     var move = data.move[key];
     var pos = { left: move.x, top: move.y };
     $("." + key).css(pos)
-      .css("z-index", parseInt(pos.y));
+      .css("z-index", parseInt(pos.top));
   }
 }
 
