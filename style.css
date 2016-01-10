@@ -12,26 +12,26 @@ html{
   background: white;
   position: absolute;
 }
-.player{
+player{
   position: relative;
   width: 32px;
   height: 64px;
   background: gray;
   display: inline-block;
   border-radius: 3px;
+  left: 0;
+  top: 0; 
 }
 
-.one{
+player.one {
   background: blue;
-  left: 20px;
-  top: 30px;
 }
-.two{
+player.two {
   background: green;
 }
-.three{
+player.three {
   background: yellow;
 }
-.four{
+player.four {
   background: red;
 }
