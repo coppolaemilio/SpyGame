@@ -10,10 +10,10 @@ html{
   height: 600px;
   border: 1px solid black;
   background: white;
-  position: absolute;
+  position: relative;
 }
 player{
-  position: relative;
+  position: absolute;
   width: 32px;
   height: 64px;
   background: gray;
