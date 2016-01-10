@@ -4,40 +4,47 @@ var server  = require('http').createServer(app);
 var io      = require('socket.io').listen(server);
 app.use(express.static(__dirname));
 
-var game = require('./game.js')(io);
+// Local libraries
+var Game = require('./game.js');
+var Player = require('./player');
 
+// The current game (yes, only one instance)
+var game = new Game(io);
 
-// Routing
+// When a person joins
 io.on('connection', function (socket) {
   
-  socket.emit('player', game.join(socket.id));
+  // Create a player for the person
+  var player = new Player(socket.id);
+  
+  // Join the game and assign a type
+  game.join(player);
+  socket.emit('player', player.type);
   
   socket.on('click', function(data){
-    game.click(socket.id);
-    console.log('click', data);
+    
+    if (player.type == 'npc') {
+      player.goTo(data.left, data.top);
+    } else {
+      game.click(data);
+    }
+    
+    socket.emit('message', data);
   });
   
   socket.on('disconnect', function () {
-    game.remove(socket.id);
+    if (player.is('sniper')) {
+      game.end('spy');
+    }
+    game.remove(player);
   });
+  
+  if (game.players.length > 0) {
+    console.log("Game started");
+    game.start();
+  }
 });
 
-
-
-setInterval(function(){
-  var pos = {
-    left: parseInt(Math.random() * 100),
-    top: parseInt(Math.random() * 100)
-  };
-  console.log(pos);
-  
-  io.sockets.emit('update', {
-    move: {
-      one: pos
-    }
-  });
-  
-}, 1000);
 
 
 //app.use('/documentation/', controller.documentation);
