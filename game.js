@@ -1,20 +1,22 @@
-var io;
-
-function Game(){
+function Game(io){
+  this.io = io;
   this.players = [];
 }
 
-Game.prototype.join = function(player){
-  var keys = Object.keys(io.engine.clients);
-  
-  console.log();
-  console.log(player + ' joined the party');
-  var type = player === 1 ? 'sniper' : 'npc';
-  this.players.push('sniper');
+Game.prototype.join = function(id){
+  var keys = Object.keys(this.io.engine.clients);
+  var type = keys.length === 1 ? 'sniper' : 'npc';
+  this.players.push(id);
+  console.log(this.players);
   return type;
 };
 
-module.exports = function(i){
-  io = i;
-  return new Game();
+Game.prototype.remove = function (id) {
+  this.players = this.players.filter(function(i){
+    return i !== id;
+  });
+};
+
+module.exports = function(io){
+  return new Game(io);
 };

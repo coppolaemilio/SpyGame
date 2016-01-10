@@ -10,13 +10,16 @@ var game = require('./game.js')(io);
 // Routing
 io.on('connection', function (socket) {
   
-  var type = game.join(socket);
-  socket.emit('player', type);
+  socket.emit('player', game.join(socket.id));
   
   socket.on('click', function(data){
     console.log('click', data);
   });
   socket.on('disconnect', function () { });
+});
+
+io.on('disconnect', function(socket){
+  game.remove(socket.id);
 });
 
 
