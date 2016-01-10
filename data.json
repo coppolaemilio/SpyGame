@@ -1,8 +1,8 @@
 {
   "move": {
-    "one": { "x": 10, "y": 5 },
-    "two": { "x": 10, "y": 5 },
-    "three": { "x": 10, "y": 5 },
-    "four": { "x": 10, "y": 5 }
+    "one": { "left": 10, "top": 5 },
+    "two": { "left": 10, "top": 5 },
+    "three": { "left": 10, "top": 5 },
+    "four": { "left": 10, "top": 5 }
   }
 }
