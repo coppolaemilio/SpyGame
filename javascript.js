@@ -50,3 +50,7 @@ function updateMessage(text){
     }
   }, 50);
 }
+
+socket.on('text', function(text){
+  updateMessage(text);
+});

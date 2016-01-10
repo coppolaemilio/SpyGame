@@ -18,8 +18,10 @@ io.on('connection', function (socket) {
   var player = new Player(socket.id);
   
   // Join the game and assign a type
+  io.sockets.emit('text', "A player joined!");
   game.join(player);
   socket.emit('player', player.type);
+
   player.goTo(10, 10);
   
   socket.on('click', function(data){
@@ -34,6 +36,8 @@ io.on('connection', function (socket) {
   });
   
   socket.on('disconnect', function () {
+    io.sockets.emit('text', "A player left the game :(");
+
     if (player.is('sniper')) {
       game.end('spy');
     }
