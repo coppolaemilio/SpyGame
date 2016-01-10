@@ -13,6 +13,9 @@ html{
   position: relative;
   margin: 0 auto;
 }
+#scene:hover{
+  cursor: crosshair;
+}
 player{
   position: absolute;
   width: 32px;
