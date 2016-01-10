@@ -3,7 +3,7 @@ function Player(id, type){
   this.type = type;
   this.pos = { x: 400, y: 230 };
   this.to = { x: 0, y: 0 };
-  this.speed = (0.1 + Math.random()) * 20;
+  this.speed = (0.1 + Math.random()) * 10;
 }
 
 Player.prototype.id = function(id){
@@ -32,9 +32,7 @@ Player.prototype.update = function(){
   var mod = Math.sqrt(diff.x * diff.x + diff.y * diff.y);
   var vec = { x: diff.x / mod, y: diff.y / mod };
   var move = { x: this.speed * vec.x, y: this.speed * vec.y };
-  
-  console.log("POSA:", pos, to);
-  
+    
   if (Math.abs(diff.x) > this.speed){
     pos.x += move.x;
   }
@@ -43,7 +41,6 @@ Player.prototype.update = function(){
     pos.y += move.y;
   }
   
-  console.log("POSB:", pos, to);
   this.pos = pos;
   return this.pos;
 }

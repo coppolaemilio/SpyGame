@@ -9,6 +9,7 @@ shoot.addEventListener("ended", function() {
     reload.play();
 });
 
+
 $("#scene").click(function(e){
   var data = {
     position: {
