@@ -20,17 +20,17 @@ Game.prototype.start = function(){
     if (self.players.length) {
       var data = {
         move: {
-          one: self.players[0].update(),
-          two: self.players[1] ? self.players[1].update() : 0,
-          three: self.players[2] ? self.players[2].update() : 0,
-          four: self.players[3] ? self.players[3].update() : 0
+          one: self.players[0].update()
         }
       };
+    if (self.players.length > 1) {
+      data.move.two = self.players[1].update();
+    }
     console.log(data);
     self.io.sockets.emit('update', data);
     }
     
-  }, 33);
+  }, 100);
 }
 
 Game.prototype.join = function(player){

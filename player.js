@@ -3,7 +3,8 @@ function Player(id, type){
   this.type = type;
   this.pos = { x: 400, y: 230 };
   this.to = { x: 0, y: 0 };
-  this.speed = 1 + Math.random() * 2;
+  var speed = 1 + Math.random() * 2;
+  this.speed = { x: speed, y: speed / 2 };
 }
 
 Player.prototype.id = function(id){
@@ -21,13 +22,30 @@ Player.prototype.goTo = function(x, y){
 
 Player.prototype.update = function(){
   
-  if (this.to.x == this.x) this.x = Math.random() * 800;
-  if (this.to.y == this.y) this.y = Math.random() * 480;
+  var pos = this.pos;
   
-  return {
-    x: this.pos.x + (this.to.x - this.pos.x) > 0 ? this.speed : -this.speed,
-    y: this.pos.y + (this.to.y - this.pos.y) > 0 ? this.speed : -this.speed
-  };
+  if (this.to.x == pos.x && this.to.y == pos.y) {
+    goTo(Math.random() * 800, Math.random() * 480);
+  }
+  
+  var to = this.to;
+  
+  
+  var diff = { x: to.x - pos.x, y: to.y - pos.y };
+  
+  if (diff.x > this.speed.x){
+    pos.x += this.speed.x;
+  } else if (diff.x < -this.speed.x) {
+    pos.x -= this.speed.x;
+  }
+  
+  if (diff.y > this.speed.y){
+    pos.y += this.speed.y;
+  } else if (diff.y < -this.speed.y) {
+    pos.y -= this.speed.y;
+  }
+  
+  return pos;
 }
 
 module.exports = Player;

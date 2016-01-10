@@ -13,7 +13,7 @@ $("#scene").click(function(e){
   var data = {
     position: {
       left: e.pageX - $(this).offset().left,
-      right: e.pageY - $(this).offset().top
+      top: e.pageY - $(this).offset().top
     },
     element: $(e.target).attr('class')
   };
@@ -24,11 +24,11 @@ $("#scene").click(function(e){
 });
 
 function update(data){
-  
   for(var key in data.move) {
     var move = data.move[key];
-    $("." + key).css(move)
-      .css("z-index", move.top);
+    var pos = { left: move.x, top: move.y };
+    $("." + key).css(pos)
+      .css("z-index", parseInt(pos.y));
   }
 }
 

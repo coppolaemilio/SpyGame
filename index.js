@@ -20,13 +20,14 @@ io.on('connection', function (socket) {
   // Join the game and assign a type
   game.join(player);
   socket.emit('player', player.type);
+  player.goTo(10, 10);
   
   socket.on('click', function(data){
     
     if (player.type == 'npc') {
-      player.goTo(data.left, data.top);
+      player.goTo(data.position.left, data.position.top);
     } else {
-      game.click(data);
+      //game.shoot(data);
     }
     
     socket.emit('message', data);
