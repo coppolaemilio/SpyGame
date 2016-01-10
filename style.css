@@ -21,17 +21,17 @@ html{
   border-radius: 3px;
 }
 
-.player-1{
+.one{
   background: blue;
   left: 20px;
   top: 30px;
 }
-.player-2{
+.two{
   background: green;
 }
-.player-3{
+.three{
   background: yellow;
 }
-.player-4{
+.four{
   background: red;
 }
