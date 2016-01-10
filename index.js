@@ -50,12 +50,4 @@ io.on('connection', function (socket) {
   }
 });
 
-
-
-//app.use('/documentation/', controller.documentation);
-//app.use('/plugins/:name', controller.plugins);
-//app.use('/plugins/', controller.plugins);
-//app.use('/test/', controller.test);
-//app.use('/', controller.index);
-
 server.listen(process.env.PORT || 3000);
