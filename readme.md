@@ -9,9 +9,11 @@ Images:
   - Background
   - Scope
   - Icons
+
 Music:
   - Sniper wins
   - Spy wins
+  
 Sound:
   - Joined game
   - Left game
