@@ -26,7 +26,13 @@ Game.prototype.start = function(){
     if (self.players.length > 1) {
       data.move.two = self.players[1].update();
     }
-    console.log(data);
+    if (self.players.length > 2) {
+      data.move.two = self.players[2].update();
+    }
+    if (self.players.length > 3) {
+      data.move.two = self.players[3].update();
+    }
+    
     self.io.sockets.emit('update', data);
     }
     
@@ -34,6 +40,10 @@ Game.prototype.start = function(){
 }
 
 Game.prototype.join = function(player){
+  player.type = 'npc';
+  this.players.push(player);
+  return player;
+  
   var keys = Object.keys(this.io.engine.clients);
   player.type = keys.length === 1 ? 'sniper' : 'npc';
   if (player.type == 'npc') {

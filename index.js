@@ -22,12 +22,12 @@ io.on('connection', function (socket) {
   game.join(player);
   socket.emit('player', player.type);
 
-  player.goTo(10, 10);
+  player.goTo({ x: 10, y: 10 });
   
   socket.on('click', function(data){
-    
     if (player.type == 'npc') {
-      player.goTo(data.position.left, data.position.top);
+      
+      player.goTo({ x: data.position.left, y: data.position.top });
     } else {
       //game.shoot(data);
     }
