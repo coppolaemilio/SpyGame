@@ -1,8 +1,37 @@
+html{
+  height: 100%;
+  background: black;
+}
+.container{
+  
+}
 #scene{
   width: 800px;
   height: 600px;
   border: 1px solid black;
+  background: white;
+  position: absolute;
 }
-.player-1{
+.player{
+  position: relative;
+  width: 32px;
+  height: 64px;
+  background: gray;
+  display: inline-block;
+  border-radius: 3px;
+}
 
+.player-1{
+  background: blue;
+  left: 20px;
+  top: 30px;
+}
+.player-2{
+  background: green;
+}
+.player-3{
+  background: yellow;
+}
+.player-4{
+  background: red;
 }
