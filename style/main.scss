@@ -16,10 +16,10 @@ html{
   margin: 0 auto;
 }
 #scene:hover{
-  cursor: crosshair;
+  
 }
-#scene.scope{
-  cursor: url(images/my-cursor.png), auto;
+#scene.sniper:hover{
+  cursor: crosshair;
 }
 player{
   position: absolute;
