@@ -10,8 +10,17 @@ $("#scene").click(function(e){
   }
 });
 
-socket.on('update', function(msg){
-  data.move.forEach(function(){
-    
-  });
-});
+function update(data){
+  
+  console.log(data);
+  
+  for(var key in data.move) {
+    var move = data.move[key];
+    $("." + key).offset(move.x, move.y);
+  }
+}
+
+
+socket.on('update', update);
+
+update({ move: { one: {x: 5, y: 10}}});
