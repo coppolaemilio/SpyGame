@@ -1,16 +1,17 @@
-$("#scene").click(function(){
-  server.send('');
-});
-<script src="/socket.io/socket.io.js"></script>
-
-
-function update(data){
-  
-}
-
 var socket = io();
-$('form').submit(function(){
-  socket.emit('chat message', $('#m').val());
-  $('#m').val('');
-  return false;
+
+$("#scene").click(function(e){
+  var pos = { x: event.pageX, y: event.pageY };
+  
+  if (player.is('sniper')) {
+    socket.emit('shot', pos);
+  } else {
+    socket.emit('move', pos);
+  }
+});
+
+socket.on('update', function(msg){
+  data.move.forEach(function(){
+    
+  });
 });
