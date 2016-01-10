@@ -2,15 +2,17 @@ var express = require('express');
 var app     = express();
 var server  = require('http').createServer(app);
 var io      = require('socket.io').listen(server);
-
-
 app.use(express.static(__dirname));
+
+var game = require('./game');
+
 
 // Routing
 io.on('connection', function (socket) {
   
+  game.join();
+  
   socket.on('click', function(data){
-    
     console.log('click', data);
   });
   socket.on('disconnect', function () { });
