@@ -38,19 +38,10 @@ socket.on('player', function(type){
   $("#scene").addClass(type);
 });
 
-var text = "";
-function updateMessage(text){
-  var index = 0;
-  $('#messages').html(" ");
-  var loop = setInterval(function () {
-    $('#messages').append(text[index]);
-    index += 1;
-    if (index == text.length) {
-        clearInterval(loop);
-    }
-  }, 50);
+function updateMessage(t){
+  $('#messages').html(t);
 }
 
-socket.on('text', function(text){
-  updateMessage(text);
+socket.on('text', function(t){
+  updateMessage(t);
 });
