@@ -9,7 +9,6 @@ $("#scene").click(function(e){
     element: $(e.target).attr('class')
   };
   socket.emit('click', data);
-  new Audio('./sfx/shoot.mp3').play();
 });
 
 function update(data){
@@ -22,3 +21,7 @@ function update(data){
 }
 
 socket.on('update', update);
+
+socket.on('player', function(type){
+  console.log(type);
+});

@@ -10,7 +10,8 @@ var game = require('./game');
 // Routing
 io.on('connection', function (socket) {
   
-  game.join();
+  var type = game.join(io.sockets.clients());
+  socket.emit('player', type);
   
   socket.on('click', function(data){
     console.log('click', data);
