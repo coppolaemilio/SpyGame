@@ -1,7 +1,8 @@
-var io = require('socket.io')(80);
 var express = require('express');
-//var controller = require('./web/controller');
-var app = express();
+var app     = express();
+var server  = require('http').createServer(app);
+var io      = require('socket.io').listen(server);
+
 
 app.use(express.static(__dirname));
 
@@ -13,13 +14,10 @@ io.on('connection', function (socket) {
   socket.on('disconnect', function () { });
 });
 
-
-
 //app.use('/documentation/', controller.documentation);
 //app.use('/plugins/:name', controller.plugins);
 //app.use('/plugins/', controller.plugins);
 //app.use('/test/', controller.test);
 //app.use('/', controller.index);
 
-
-app.listen(process.env.PORT || 80);
+server.listen(process.env.PORT || 3000);
