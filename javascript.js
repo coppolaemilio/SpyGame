@@ -1,11 +1,14 @@
 var socket = io();
 
 $("#scene").click(function(e){
-  var pos = {
-    left: e.pageX - $(this).offset().left,
-    top: e.pageY - $(this).offset().top
+  var data = {
+    position: {
+      left: e.pageX - $(this).offset().left,
+      right: e.pageY - $(this).offset().top
+    },
+    element: $(e.target).attr('class')
   };
-  socket.emit('click', pos);
+  socket.emit('click', data);
 });
 
 function update(data){
