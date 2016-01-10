@@ -1,8 +1,10 @@
 var socket = io();
 
 $("#scene").click(function(e){
-  var pos = { x: e.pageX, y: e.pageY };
-  console.log(pos);
+  var pos = {
+    left: e.pageX - $(this).offset().left,
+    top: e.pageY - $(this).offset().top
+  };
   socket.emit('click', pos);
 });
 
@@ -10,7 +12,7 @@ function update(data){
   
   for(var key in data.move) {
     var move = data.move[key];
-    $("." + key).offset(move)
+    $("." + key).css(move)
       .css("z-index", move.top);
   }
 }
