@@ -25,3 +25,17 @@ socket.on('update', update);
 socket.on('player', function(type){
   $("#scene").addClass(type);
 });
+
+var text = "";
+function updateMessage(text){
+  var index = 0;
+  $('#messages').html(" ");
+  var loop = setInterval(function () {
+    $('#messages').append(text[index]);
+    index += 1;
+    if (index == text.length) {
+        clearInterval(loop);
+    }
+  }, 50);
+}
+updateMessage("hola!");

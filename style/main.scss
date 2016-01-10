@@ -3,24 +3,34 @@ $color-1: red;
 html{
   height: 100%;
   background: black;
-}
-.container{
-  
+  background-image: url("/images/background.jpg");
 }
 #scene{
+  border-radius: 15px;
+  overflow: hidden;
   width: 800px;
-  height: 600px;
+  height: 460px;
   border: 1px solid black;
   background: white;
   position: relative;
   margin: 0 auto;
 }
-#scene:hover{
-  
-}
 #scene.sniper:hover{
   cursor: crosshair;
 }
+
+#messages{
+  height: 20px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+
+
+// Player
 player{
   position: absolute;
   width: 32px;
