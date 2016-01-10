@@ -1,35 +1,29 @@
 var socket = io();
 
 $("#scene").click(function(e){
-  var pos = { x: event.pageX, y: event.pageY };
-  
-  // if (player.is('sniper')) {
-  //   socket.emit('shot', pos);
-  // } else {
-  //   socket.emit('move', pos);
-  // }
+  var pos = { x: e.pageX, y: e.pageY };
+  console.log(pos);
+  socket.emit('click', pos);
 });
 
 function update(data){
   
   for(var key in data.move) {
     var move = data.move[key];
-    console.log(key);
-    $("." + key).offset(move);
+    $("." + key).offset(move)
+      .css("z-index", move.top);
   }
-  
-  $("player").each(function() {
-    $(this).css("z-index", $(this).css("top").replace("px",""));
-  });
 }
-
 
 socket.on('update', update);
 
 setInterval(function(){
   update({
     move: {
-      one: { left: Math.random() * 100, top: Math.random() * 100 }
+      one: {
+        left: parseInt(Math.random() * 100),
+        top: parseInt(Math.random() * 100)
+      }
     }
   });
 }, 1000);
