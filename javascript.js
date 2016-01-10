@@ -23,5 +23,5 @@ function update(data){
 socket.on('update', update);
 
 socket.on('player', function(type){
-  console.log(type);
+  $("#scene").addClass(type);
 });

@@ -4,13 +4,13 @@ var server  = require('http').createServer(app);
 var io      = require('socket.io').listen(server);
 app.use(express.static(__dirname));
 
-var game = require('./game');
+var game = require('./game.js')(io);
 
 
 // Routing
 io.on('connection', function (socket) {
   
-  var type = game.join(io.sockets.clients());
+  var type = game.join(socket);
   socket.emit('player', type);
   
   socket.on('click', function(data){

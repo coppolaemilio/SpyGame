@@ -1,12 +1,20 @@
+var io;
 
 function Game(){
   this.players = [];
 }
 
 Game.prototype.join = function(player){
-  var type = player === 0 ? 'sniper' : 'npc';
+  var keys = Object.keys(io.engine.clients);
+  
+  console.log();
+  console.log(player + ' joined the party');
+  var type = player === 1 ? 'sniper' : 'npc';
   this.players.push('sniper');
   return type;
 };
 
-module.exports = function(){ new Game(); };
+module.exports = function(i){
+  io = i;
+  return new Game();
+};
