@@ -11,6 +11,7 @@ html{
   border: 1px solid black;
   background: white;
   position: relative;
+  margin: 0 auto;
 }
 player{
   position: absolute;
