@@ -13,14 +13,15 @@ io.on('connection', function (socket) {
   socket.emit('player', game.join(socket.id));
   
   socket.on('click', function(data){
+    game.click(socket.id);
     console.log('click', data);
   });
-  socket.on('disconnect', function () { });
+  
+  socket.on('disconnect', function () {
+    game.remove(socket.id);
+  });
 });
 
-io.on('disconnect', function(socket){
-  game.remove(socket.id);
-});
 
 
 setInterval(function(){

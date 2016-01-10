@@ -11,11 +11,20 @@ Game.prototype.join = function(id){
   return type;
 };
 
-Game.prototype.remove = function (id) {
-  this.players = this.players.filter(function(i){
-    return i !== id;
-  });
+Game.prototype.click = function(id){
+  this.end(this.players[0] === id);
+}
+
+Game.prototype.remove = function (id){
+  console.log("Left: ", id, this.players);
+  console.log(this.players[0], id);
+  this.end(this.players[0] === id);
 };
+
+Game.prototype.end = function(sniper){
+  console.log("Game ended");
+  console.log(sniper ? 'Sniper won' : 'NPC won');
+}
 
 module.exports = function(io){
   return new Game(io);
