@@ -12,7 +12,7 @@ html{
   background: white;
   position: absolute;
 }
-.player{
+player{
   position: relative;
   width: 32px;
   height: 64px;
@@ -21,17 +21,15 @@ html{
   border-radius: 3px;
 }
 
-.one{
+player.one {
   background: blue;
-  left: 20px;
-  top: 30px;
 }
-.two{
+player.two {
   background: green;
 }
-.three{
+player.three {
   background: yellow;
 }
-.four{
+player.four {
   background: red;
 }
