@@ -1,3 +1,5 @@
+$color-1: red;
+
 html{
   height: 100%;
   background: black;
@@ -37,5 +39,5 @@ player.three {
   background: yellow;
 }
 player.four {
-  background: red;
+  background: $color-1;
 }
