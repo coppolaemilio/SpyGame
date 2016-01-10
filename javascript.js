@@ -1,5 +1,14 @@
 var socket = io();
 
+// Audio files
+var shoot = new Audio('/sfx/shoot.mp3');
+var reload = new Audio('/sfx/reload.mp3');
+
+shoot.addEventListener("ended", function() {
+    shoot.currentTime = 0;
+    reload.play();
+});
+
 $("#scene").click(function(e){
   var data = {
     position: {
@@ -9,6 +18,9 @@ $("#scene").click(function(e){
     element: $(e.target).attr('class')
   };
   socket.emit('click', data);
+
+  // Play shooting sound
+  shoot.play();
 });
 
 function update(data){
@@ -25,3 +37,16 @@ socket.on('update', update);
 socket.on('player', function(type){
   $("#scene").addClass(type);
 });
+
+var text = "";
+function updateMessage(text){
+  var index = 0;
+  $('#messages').html(" ");
+  var loop = setInterval(function () {
+    $('#messages').append(text[index]);
+    index += 1;
+    if (index == text.length) {
+        clearInterval(loop);
+    }
+  }, 50);
+}
