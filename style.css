@@ -19,6 +19,8 @@ player{
   background: gray;
   display: inline-block;
   border-radius: 3px;
+  left: 0;
+  top: 0; 
 }
 
 player.one {
