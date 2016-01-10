@@ -58,3 +58,17 @@ player.three {
 player.four {
   background: $color-1;
 }
+
+// Win/lose modals
+.modal{
+  display: none;
+  position: fixed;
+  width: 300px;
+  left: 50%;
+  top: 33%;
+  box-shadow: 0 0 10px;
+  transform: translate(-50%,-50%);
+  padding: 30px;
+  text-align: center;
+  font-size: 41px;
+}
