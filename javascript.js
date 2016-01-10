@@ -23,5 +23,11 @@ function update(data){
 socket.on('update', update);
 
 socket.on('player', function(type){
-  $("#scene").addClass(type);
+  $("#scope").show();
+  $(document).on('mousemove', function(e){
+    $('#scope').css({
+       left:  e.pageX,
+       top:   e.pageY
+    });
+});
 });
