@@ -1,0 +1,21 @@
+{
+  "name": "spygame",
+  "version": "1.0.0",
+  "description": "spygame",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coppolaemilio/SpyGame.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coppolaemilio/SpyGame/issues"
+  },
+  "homepage": "https://github.com/coppolaemilio/SpyGame#readme"
+}
