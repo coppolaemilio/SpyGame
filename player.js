@@ -42,8 +42,8 @@ Player.prototype.update = function(){
   }
   
   // Colliding with the top wall
-  if (this.pos.y < 253){
-    this.pos.y = 253.1
+  if (this.pos.y < 192){
+    this.pos.y = 192.1
   }
 
   this.pos = pos;

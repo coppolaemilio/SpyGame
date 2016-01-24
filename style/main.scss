@@ -1,13 +1,19 @@
 @import 'reset.scss';
+
+@font-face {
+  font-family: 'PC Senior';
+  src: url('/font/pcsenior.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
 $color-1: red;
 
 html{
   height: 100%;
   background: black;
   background-image: url("/images/background.jpg");
+  font-family: 'PC Senior';
 }
 #scene{
-  border-radius: 15px;
   overflow: hidden;
   width: 800px;
   height: 460px;
@@ -26,7 +32,6 @@ html{
   color: white;
   font-size: 20px;
   padding: 10px;
-  font-family: sans-serif;
 }
 
 
