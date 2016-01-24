@@ -19,11 +19,29 @@ $("#scene").click(function(e){
     element: $(e.target).attr('class')
   };
 
-  // Colliding with top wall
+  /*
+    Not allowing the player to collide
+    with the walls.
+  */
+  // top wall
   if (data.position.top < 193 ){
-    data.position.top = 193.1
+    data.position.top = 193;
   }
-  
+  // sides
+  for (i = 0; i < 267; i++) { 
+    if (Math.floor(data.position.top) == i + 193 ){
+      // left
+      if (data.position.left < 144 - (i * 0.5)){
+        data.position.left = 144 - (i * 0.5);
+      }
+      // right
+      if (data.position.left > 648 + (i * 0.5)){
+        data.position.left = 648 + (i * 0.5);
+      }
+    }
+  }
+
+
   socket.emit('click', data);
 
   // Play shooting sound

@@ -3,7 +3,7 @@ function Player(id, type){
   this.type = type;
   this.pos = { x: 400, y: 230 };
   this.to = { x: 400, y: 230 };
-  this.speed = (0.1 + Math.random()) * 10;
+  this.speed = Math.random() * (6 - 5.5) + 5.5;
 }
 
 Player.prototype.id = function(id){
