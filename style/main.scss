@@ -39,29 +39,23 @@ html{
 // Player
 player{
   position: absolute;
-  width: 32px;
-  height: 64px;
-  background: gray;
   display: inline-block;
   border-radius: 3px;
-  left: 0;
-  top: 0; 
-  box-shadow: 0 7px 7px -2px rgba(0,0,0,.3);
   transition: all 0.1s linear;
-  transform: translate(-16px, -64px);
-}
+  transform: translate(-44px, -101px) scale(1, 1);
+  background-image: url("/images/players/shadow.png");
+  background-repeat: no-repeat;
+  background-position: 10px 81px;
+  padding-bottom: 10px;
+  cursor: default;
 
-player.one {
-  background: blue;
-}
-player.two {
-  background: green;
-}
-player.three {
-  background: yellow;
-}
-player.four {
-  background: $color-1;
+  // Avoid select when spamming click
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* IE/Edge */
+  user-select: none;           /* non-prefixed version, currently
+                                  not supported by any browser */
 }
 
 // Win/lose modals

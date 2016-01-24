@@ -11,16 +11,20 @@ var Player = require('./player');
 // The current game (yes, only one instance)
 var game = new Game(io);
 
+// Globals
+var connectCounter = 0;
+
 // When a person joins
 io.on('connection', function (socket) {
-  
+  connectCounter++;
+
   // Create a player for the person
   var player = new Player(socket.id);
   
   // Join the game and assign a type
   io.sockets.emit('text', "A player joined!");
   game.join(player);
-  socket.emit('player', player.type);
+  socket.emit('player', { type: player.type, number: connectCounter });
 
   //player.goTo({ x: 10, y: 10 });
   
@@ -36,6 +40,7 @@ io.on('connection', function (socket) {
   });
   
   socket.on('disconnect', function () {
+    connectCounter--;
     io.sockets.emit('text', "A player left the game :(");
 
     if (player.is('sniper')) {

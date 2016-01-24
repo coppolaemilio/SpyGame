@@ -11,6 +11,15 @@ shoot.addEventListener("ended", function() {
 
 
 $("#scene").click(function(e){
+  if ($(this).attr("class", "npc")){
+    var player_number = $(this).attr("player");
+    if (e.pageX > $("player").offset().left){
+      $("player." + player_number ).css("transform","translate(-44px, -101px) scale(1, 1)");
+    } else {
+      $("player." + player_number ).css("transform","translate(-44px, -101px) scale(-1, 1)");
+    }
+  }
+  console.log($(e.target).attr('class'));
   var data = {
     position: {
       left: e.pageX - $(this).offset().left,
@@ -59,8 +68,13 @@ function update(data){
 
 socket.on('update', update);
 
-socket.on('player', function(type){
-  $("#scene").addClass(type);
+socket.on('player', function(player){
+  $("#scene").addClass(player.type);
+  var c;
+  if ( player.number == 1 ) { c = "one" }
+  if ( player.number == 2 ) { c = "two" }
+  if ( player.number == 3 ) { c = "three" }
+  $("#scene").attr("player", c);
 });
 
 function updateMessage(t){
