@@ -22,7 +22,7 @@ io.on('connection', function (socket) {
   game.join(player);
   socket.emit('player', player.type);
 
-  player.goTo({ x: 10, y: 10 });
+  //player.goTo({ x: 10, y: 10 });
   
   socket.on('click', function(data){
     if (player.type == 'npc') {

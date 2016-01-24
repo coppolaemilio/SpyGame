@@ -2,7 +2,7 @@ function Player(id, type){
   this.id = id;
   this.type = type;
   this.pos = { x: 400, y: 230 };
-  this.to = { x: 0, y: 0 };
+  this.to = { x: 400, y: 230 };
   this.speed = (0.1 + Math.random()) * 10;
 }
 
@@ -32,7 +32,7 @@ Player.prototype.update = function(){
   var mod = Math.sqrt(diff.x * diff.x + diff.y * diff.y);
   var vec = { x: diff.x / mod, y: diff.y / mod };
   var move = { x: this.speed * vec.x, y: this.speed * vec.y };
-    
+  
   if (Math.abs(diff.x) > this.speed){
     pos.x += move.x;
   }
@@ -41,6 +41,11 @@ Player.prototype.update = function(){
     pos.y += move.y;
   }
   
+  // Colliding with the top wall
+  if (this.pos.y < 253){
+    this.pos.y = 253.1
+  }
+
   this.pos = pos;
   return this.pos;
 }
