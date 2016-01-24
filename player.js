@@ -40,11 +40,6 @@ Player.prototype.update = function(){
   if (Math.abs(diff.y) > this.speed){
     pos.y += move.y;
   }
-  
-  // Colliding with the top wall
-  if (this.pos.y < 192){
-    this.pos.y = 192.1
-  }
 
   this.pos = pos;
   return this.pos;

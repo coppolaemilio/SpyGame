@@ -18,6 +18,12 @@ $("#scene").click(function(e){
     },
     element: $(e.target).attr('class')
   };
+
+  // Colliding with top wall
+  if (data.position.top < 193 ){
+    data.position.top = 193.1
+  }
+  
   socket.emit('click', data);
 
   // Play shooting sound
